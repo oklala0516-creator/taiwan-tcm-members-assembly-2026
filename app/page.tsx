@@ -71,7 +71,7 @@ export default function Home() {
         <div className="hero-actions"><a className="primary-button" href="#schedule">查看完整行程 <span>↓</span></a><button className="text-button" onClick={downloadCalendar}>下載行事曆</button></div>
       </div>
       <div className="hero-visual">
-        <img src="/og.png" alt="中藥材與現代品質檢驗設備，象徵傳統本草與現代科學的交會" />
+        <img src="/hero-astragalus-v2.png" alt="黃耆原根與切片搭配現代品質檢驗設備" />
         <div className="photo-caption"><span>HERITAGE × SCIENCE</span><b>傳統本草，現代標準</b></div>
         <div className="countdown"><span>{countdown ? "距離活動還有" : "活動日期"}</span>{countdown ? <div><b>{countdown.days}</b><small>天</small><b>{String(countdown.hours).padStart(2, "0")}</b><small>時</small><b>{String(countdown.minutes).padStart(2, "0")}</b><small>分</small></div> : <strong>2026.09.19</strong>}</div>
       </div>
@@ -85,6 +85,10 @@ export default function Home() {
         <blockquote>品質，不只是一份檢驗報告。<br />它始於產地，也成於每一個人的專業判斷。</blockquote>
         <div><p>這不只是一趟工廠參訪，也是一場把「源頭管理、製程實務、產業權益」放在同一張桌上討論的年度聚會。</p><p>上午以現場觀察建立共同語言；下午透過會員大會凝聚問題、提案與行動方向，讓專業交流真正回到產業日常。</p></div>
       </div>
+      <figure className="story-figure source-figure">
+        <img src="/source-traceability.png" alt="品管人員檢視同一批黃耆原根的外觀與尺寸" />
+        <figcaption><span>RAW MATERIAL CONTROL</span><b>原料驗收：外觀、規格與批次紀錄</b></figcaption>
+      </figure>
       <div className="impact-grid">
         <article><span>01</span><h3>看見源頭</h3><p>理解藥材從產地、供應商到入廠前的品質管理思維。</p></article>
         <article><span>02</span><h3>走進製程</h3><p>把書面規範放進實際場域，看見品質如何被執行與記錄。</p></article>
@@ -93,7 +97,10 @@ export default function Home() {
     </section>
 
     <section className="focus-section">
-      <div className="focus-heading"><p className="section-index">02 / QUALITY FOCUS</p><h2>從源頭到成品，<br />我們關注什麼？</h2><p>專題交流將以實務管理為核心，協助會員建立一套更完整的品質觀察框架。</p></div>
+      <div className="focus-heading">
+        <p className="section-index">02 / QUALITY FOCUS</p><h2>從源頭到成品，<br />我們關注什麼？</h2><p>專題交流將以實務管理為核心，協助會員建立一套更完整的品質觀察框架。</p>
+        <figure className="focus-photo"><img src="/modern-production.png" alt="現代化製藥工廠的不鏽鋼密閉製程設備" /><figcaption>PROCESS CONTROL · 製程管制</figcaption></figure>
+      </div>
       <div className="focus-list">{qualityFocus.map(([no,title,desc]) => <article key={no}><span>{no}</span><div><h3>{title}</h3><p>{desc}</p></div></article>)}</div>
     </section>
 
@@ -117,7 +124,10 @@ export default function Home() {
     </section>
 
     <section className="assembly-section">
-      <div className="assembly-copy"><p className="section-index">05 / MEMBERS IN ACTION</p><h2>讓會員大會，<br />成為行動的起點。</h2><p>下午會議不只是例行程序，而是協會梳理產業現況、承接會員聲音、確認下一階段工作方向的重要時刻。</p></div>
+      <div className="assembly-copy">
+        <p className="section-index">05 / MEMBERS IN ACTION</p><h2>讓會員大會，<br />成為行動的起點。</h2><p>下午會議不只是例行程序，而是協會梳理產業現況、承接會員聲音、確認下一階段工作方向的重要時刻。</p>
+        <figure className="assembly-photo"><img src="/members-assembly.png" alt="會員圍桌討論並交換產業意見" /><figcaption>MEMBERS IN ACTION · 讓專業意見成為共同方向</figcaption></figure>
+      </div>
       <div className="assembly-steps"><article><b>01</b><div><h3>會務與工作報告</h3><p>回顧協會階段性工作、產業服務與重要議題進度。</p></div></article><article><b>02</b><div><h3>提案討論</h3><p>依正式議程進行說明、意見交換與表決程序。</p></div></article><article><b>03</b><div><h3>會員意見交流</h3><p>彙整第一線實務問題，辨識可共同推動的倡議方向。</p></div></article><article><b>04</b><div><h3>形成後續行動</h3><p>確認分工、追蹤節點與後續溝通方式，讓共識持續前進。</p></div></article></div>
     </section>
 
