@@ -86,7 +86,7 @@ export default function Home() {
         <div><p>這不只是一趟工廠參訪，也是一場把「源頭管理、製程實務、產業權益」放在同一張桌上討論的年度聚會。</p><p>上午以現場觀察建立共同語言；下午透過會員大會凝聚問題、提案與行動方向，讓專業交流真正回到產業日常。</p></div>
       </div>
       <figure className="story-figure source-figure">
-        <img src="/source-traceability.png" alt="品管人員檢視同一批黃耆原根的外觀與尺寸" />
+        <img src="/source-traceability.png" alt="朱紅線串連黃耆從產地、整理到原料驗收的旅程" />
         <figcaption><span>RAW MATERIAL CONTROL</span><b>原料驗收：外觀、規格與批次紀錄</b></figcaption>
       </figure>
       <div className="impact-grid">
@@ -99,7 +99,7 @@ export default function Home() {
     <section className="focus-section">
       <div className="focus-heading">
         <p className="section-index">02 / QUALITY FOCUS</p><h2>從源頭到成品，<br />我們關注什麼？</h2><p>專題交流將以實務管理為核心，協助會員建立一套更完整的品質觀察框架。</p>
-        <figure className="focus-photo"><img src="/modern-production.png" alt="現代化製藥工廠的不鏽鋼密閉製程設備" /><figcaption>PROCESS CONTROL · 製程管制</figcaption></figure>
+        <figure className="focus-photo"><img src="/modern-production.png" alt="密閉製程設備化為山水長卷，金色流線通過各個品質節點" /><figcaption>PROCESS CONTROL · 製程管制</figcaption></figure>
       </div>
       <div className="focus-list">{qualityFocus.map(([no,title,desc]) => <article key={no}><span>{no}</span><div><h3>{title}</h3><p>{desc}</p></div></article>)}</div>
     </section>
@@ -126,7 +126,7 @@ export default function Home() {
     <section className="assembly-section">
       <div className="assembly-copy">
         <p className="section-index">05 / MEMBERS IN ACTION</p><h2>讓會員大會，<br />成為行動的起點。</h2><p>下午會議不只是例行程序，而是協會梳理產業現況、承接會員聲音、確認下一階段工作方向的重要時刻。</p>
-        <figure className="assembly-photo"><img src="/members-assembly.png" alt="會員圍桌討論並交換產業意見" /><figcaption>MEMBERS IN ACTION · 讓專業意見成為共同方向</figcaption></figure>
+        <figure className="assembly-photo"><img src="/members-assembly.png" alt="會員圍桌共議，眾人的提案匯聚成一片銀杏葉" /><figcaption>MEMBERS IN ACTION · 讓專業意見成為共同方向</figcaption></figure>
       </div>
       <div className="assembly-steps"><article><b>01</b><div><h3>會務與工作報告</h3><p>回顧協會階段性工作、產業服務與重要議題進度。</p></div></article><article><b>02</b><div><h3>提案討論</h3><p>依正式議程進行說明、意見交換與表決程序。</p></div></article><article><b>03</b><div><h3>會員意見交流</h3><p>彙整第一線實務問題，辨識可共同推動的倡議方向。</p></div></article><article><b>04</b><div><h3>形成後續行動</h3><p>確認分工、追蹤節點與後續溝通方式，讓共識持續前進。</p></div></article></div>
     </section>
