@@ -19,7 +19,9 @@ import {
   MapPin,
   Menu,
   Microscope,
+  Pause,
   Phone,
+  Play,
   Route,
   ScrollText,
   Sprout,
@@ -27,6 +29,7 @@ import {
   X,
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { NavigationChooser } from "./components/NavigationChooser";
 import { useEffect, useRef, useState } from "react";
 import { Countdown } from "./components/Countdown";
 import { ScheduleTimeline } from "./components/ScheduleTimeline";
@@ -38,8 +41,8 @@ const navItems = [
   ["intro", "活動介紹"],
   ["highlights", "參訪亮點"],
   ["schedule", "當日行程"],
-  ["transport", "交通方式"],
   ["meeting", "會員大會"],
+  ["transport", "交通方式"],
   ["downloads", "文件下載"],
 ] as const;
 
@@ -97,7 +100,7 @@ function Header() {
       <div className="header-inner">
         <a className="brand" href="#top" aria-label="台灣中藥權益促進會活動首頁">
           <span className="brand-mark"><img src={event.assets.mark} width="52" height="52" alt="" /></span>
-          <span className="brand-name">台灣中藥權益促進會<small>TAIWAN CHINESE MEDICINE</small></span>
+          <span className="brand-name">台灣中藥權益促進會</span>
         </a>
         <nav className="desktop-nav" aria-label="主要導覽">
           {navItems.map(([id, label]) => <a className={active === id ? "active" : ""} href={`#${id}`} key={id}>{label}</a>)}
@@ -149,8 +152,8 @@ function Hero() {
           </h1>
           <div className="hero-subtitle" aria-label="活動內容">
             <ol className="hero-program-list">
-              <li><span aria-hidden="true">01</span><strong>中藥材質量管理與源頭管理</strong></li>
-              <li><span aria-hidden="true">02</span><strong>教育訓練暨科達製藥參訪</strong></li>
+              <li><span aria-hidden="true">01</span><strong>中藥材質量管理與源頭管理教育訓練</strong></li>
+              <li><span aria-hidden="true">02</span><strong>科達製藥參訪</strong></li>
               <li><span aria-hidden="true">03</span><strong>第三屆第二次會員大會</strong></li>
             </ol>
           </div>
@@ -188,15 +191,35 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 
 function HerbJourney() {
   const [active, setActive] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [interactionPaused, setInteractionPaused] = useState(false);
   const reducedMotion = useReducedMotion();
   const showPrevious = () => setActive((current) => (current - 1 + journeys.length) % journeys.length);
+
+  useEffect(() => {
+    if (reducedMotion || !autoPlay || interactionPaused) return;
+    const intervalId = window.setInterval(() => {
+      setActive((current) => (current + 1) % journeys.length);
+    }, 5000);
+    return () => window.clearInterval(intervalId);
+  }, [autoPlay, interactionPaused, reducedMotion]);
+
   const showNext = () => setActive((current) => (current + 1) % journeys.length);
   return (
     <section className="section journey-section" aria-labelledby="journey-title">
       <div className="section-shell">
         <SectionHeading eyebrow="HERB JOURNEY" title="一株藥材的旅程" body="從自然產地走進現代製程，品質不是單一檢查，而是一段環環相扣的旅程。" />
         <div className="journey-layout">
-          <div className="journey-visual" aria-live="polite">
+          <div
+            className="journey-visual"
+            aria-live={autoPlay && !reducedMotion ? "off" : "polite"}
+            onPointerEnter={() => setInteractionPaused(true)}
+            onPointerLeave={() => setInteractionPaused(false)}
+            onFocusCapture={() => setInteractionPaused(true)}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setInteractionPaused(false);
+            }}
+          >
             <AnimatePresence mode="wait">
               <motion.img
                 key={`${journeys[active].number}-${journeys[active].image}`}
@@ -220,6 +243,9 @@ function HerbJourney() {
                 ))}
               </div>
               <button type="button" onClick={showNext} aria-label="下一張"><ChevronRight aria-hidden="true" /></button>
+              <button type="button" onClick={() => setAutoPlay((value) => !value)} aria-label={autoPlay ? "暫停自動輪播" : "開始自動輪播"}>
+                {autoPlay ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+              </button>
             </div>
             <span className="journey-caption">{journeys[active].number} / 04 · {journeys[active].subtitle}</span>
           </div>
@@ -327,6 +353,7 @@ function FeeCalculator() {
 
 function App() {
   const [toast, setToast] = useState("");
+  const [navigationOpen, setNavigationOpen] = useState(false);
   const reducedMotion = useReducedMotion();
   const registrationClosed = getRegistrationPhase(event.registrationDeadline) === "closed";
 
@@ -410,22 +437,8 @@ function App() {
 
         <section className="section schedule-section" id="schedule">
           <div className="section-shell schedule-layout">
-            <div className="schedule-sticky"><SectionHeading eyebrow="DAY PLAN" title="一日行程，從學習走向交流" body="點選每個時段，可查看地點與當日提醒。活動當日將依台北時間標示進行中與下一個行程。" /></div>
+            <div className="schedule-sticky"><SectionHeading eyebrow="DAY PLAN" title="一日行程，從學習走向交流" body="所有活動依時間完整排列；點選每個時段，可查看地點與當日提醒。" /></div>
             <ScheduleTimeline />
-          </div>
-        </section>
-
-        <section className="section transport-section" id="transport">
-          <div className="section-shell">
-            <SectionHeading eyebrow="GETTING THERE" title="我怎麼前往？" body="選擇交通方式，快速看見集合時間、費用與導航資訊。" />
-            <TransportSelector onCopy={copyText} />
-          </div>
-        </section>
-
-        <section className="section fee-section" aria-labelledby="fee-title">
-          <div className="section-shell fee-layout">
-            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>依正式公文列示費用計算。會員費用依交通方式計價；非會員依參加內容計價。</p></div>
-            <FeeCalculator />
           </div>
         </section>
 
@@ -452,6 +465,20 @@ function App() {
                 </ul>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section transport-section" id="transport">
+          <div className="section-shell">
+            <SectionHeading eyebrow="GETTING THERE" title="我怎麼前往？" body="選擇交通方式，快速看見集合時間、費用與導航資訊。" />
+            <TransportSelector onCopy={copyText} />
+          </div>
+        </section>
+
+        <section className="section fee-section" aria-labelledby="fee-title">
+          <div className="section-shell fee-layout">
+            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>依正式公文列示費用計算。會員費用依交通方式計價；非會員依參加內容計價。</p></div>
+            <FeeCalculator />
           </div>
         </section>
 
@@ -497,9 +524,11 @@ function App() {
 
       <nav className="mobile-action-bar" aria-label="快速操作">
         <a href="#schedule"><ScrollText aria-hidden="true" /><span>行程</span></a>
-        <a href={event.locations.koda.mapUrl} target="_blank" rel="noreferrer"><MapPin aria-hidden="true" /><span>導航</span></a>
+        <button type="button" aria-haspopup="dialog" aria-expanded={navigationOpen} onClick={() => setNavigationOpen(true)}><MapPin aria-hidden="true" /><span>導航</span></button>
         <a href="#contact"><Phone aria-hidden="true" /><span>{registrationClosed ? "聯絡主辦" : "報名／聯絡"}</span></a>
       </nav>
+
+      <NavigationChooser open={navigationOpen} onClose={() => setNavigationOpen(false)} />
 
       <AnimatePresence>
         {toast && <motion.div className="toast" role="status" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>{toast}</motion.div>}

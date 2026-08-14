@@ -52,7 +52,6 @@ h3 { font-size: 1.35rem; }
 .brand-mark { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; background: rgba(255, 253, 248, .8); border: 1px solid rgba(31, 45, 38, .1); border-radius: 50%; }
 .brand img { width: 38px; height: 38px; object-fit: contain; }
 .brand-name { display: grid; line-height: 1.25; }
-.brand-name small { margin-top: 2px; color: #688074; font-family: "Noto Sans TC", sans-serif; font-size: .46rem; font-weight: 800; letter-spacing: .11em; }
 .desktop-nav { display: none; }
 .menu-button { display: inline-flex; min-width: 76px; min-height: 44px; padding: 0 10px 0 14px; gap: 8px; align-items: center; justify-content: center; color: var(--ink); background: rgba(255, 253, 248, .78); border: 1px solid rgba(31, 45, 38, .12); border-radius: 999px; cursor: pointer; }
 .menu-button svg { width: 19px; }
@@ -307,9 +306,22 @@ h3 { font-size: 1.35rem; }
 .site-footer small, .site-footer p { color: var(--muted); font-size: .76rem; }
 .site-footer p { margin: 0; }
 .mobile-action-bar { position: fixed; display: grid; left: 10px; right: 10px; bottom: 10px; z-index: 45; padding: 6px 7px calc(6px + env(safe-area-inset-bottom)); grid-template-columns: 1fr 1fr 1.3fr; color: var(--ink); background: rgba(255, 253, 248, .94); border: 1px solid rgba(31, 45, 38, .13); border-radius: 19px; box-shadow: 0 16px 40px rgba(31, 45, 38, .19); backdrop-filter: blur(15px); }
-.mobile-action-bar a { display: grid; min-height: 54px; place-items: center; align-content: center; border-radius: 13px; font-size: .72rem; font-weight: 800; }
-.mobile-action-bar a:last-child { background: var(--yellow); }
+.mobile-action-bar a, .mobile-action-bar button { display: grid; min-height: 54px; padding: 0; place-items: center; align-content: center; color: inherit; background: transparent; border: 0; border-radius: 13px; cursor: pointer; font: inherit; font-size: .72rem; font-weight: 800; }
+.mobile-action-bar > :last-child { background: var(--yellow); }
 .mobile-action-bar svg { width: 20px; height: 20px; }
+.navigation-sheet-backdrop { position: fixed; display: flex; inset: 0; z-index: 70; padding: 20px 14px calc(94px + env(safe-area-inset-bottom)); align-items: flex-end; justify-content: center; background: rgba(22, 31, 26, .42); backdrop-filter: blur(5px); }
+.navigation-sheet { width: min(100%, 480px); padding: 20px; background: var(--paper); border: 1px solid rgba(31, 45, 38, .13); border-radius: 26px; box-shadow: 0 24px 70px rgba(31, 45, 38, .3); }
+.navigation-sheet-heading { display: flex; margin-bottom: 16px; gap: 16px; align-items: flex-start; justify-content: space-between; }
+.navigation-sheet-heading span { color: #5d7768; font-size: .72rem; font-weight: 900; letter-spacing: .13em; }
+.navigation-sheet-heading h2 { margin-top: 3px; font-size: 1.55rem; }
+.navigation-sheet-heading button { display: grid; width: 42px; height: 42px; flex: 0 0 auto; padding: 0; place-items: center; color: var(--ink); background: var(--cream); border: 1px solid var(--line); border-radius: 50%; cursor: pointer; }
+.navigation-destinations { display: grid; gap: 9px; }
+.navigation-destinations > a { display: grid; min-height: 76px; padding: 12px; grid-template-columns: 42px minmax(0, 1fr) 20px; gap: 11px; align-items: center; background: var(--cream); border: 1px solid var(--line); border-radius: 16px; }
+.navigation-destination-icon { display: grid; width: 42px; height: 42px; place-items: center; color: var(--forest); background: rgba(185, 221, 181, .55); border-radius: 13px; }
+.navigation-destinations strong, .navigation-destinations small { display: block; }
+.navigation-destinations strong { font-family: var(--serif); font-size: 1rem; }
+.navigation-destinations small { margin-top: 3px; color: var(--muted); font-size: .7rem; line-height: 1.45; }
+.navigation-destinations > a > svg { width: 18px; color: #5f7468; }
 .toast { position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom)); z-index: 80; padding: 10px 15px; color: #fff; background: rgba(31, 45, 38, .95); border-radius: 999px; box-shadow: 0 10px 30px rgba(31, 45, 38, .2); transform: translateX(-50%); font-size: .82rem; white-space: nowrap; }
 
 @keyframes breathe { 0%, 100% { transform: scale(.85); opacity: .7; } 50% { transform: scale(1.18); opacity: 1; } }
