@@ -3,9 +3,12 @@ import {
   ArrowRight,
   BookOpenCheck,
   BusFront,
+  CameraOff,
   Check,
+  ChevronLeft,
   ChevronRight,
   Clipboard,
+  CupSoda,
   Download,
   ExternalLink,
   Factory,
@@ -41,10 +44,10 @@ const navItems = [
 ] as const;
 
 const journeys = [
-  { number: "01", title: "源頭", subtitle: "產地・藥材・溯源", body: "從產地環境、品種與供應鏈開始理解藥材，讓每一步都有跡可循。", image: event.assets.originQuality },
-  { number: "02", title: "品質", subtitle: "辨識・檢驗・把關", body: "以專業辨識與檢驗建立標準，讓經驗與科學共同守住品質。", image: event.assets.originQuality },
-  { number: "03", title: "製程", subtitle: "設備・流程・標準化", body: "走進現代製藥現場，看藥材如何透過精密設備形成穩定製程。", image: event.assets.processLegacy },
-  { number: "04", title: "傳承", subtitle: "交流・知能・產業發展", body: "在學習與交流之間累積共同語言，讓專業成為中藥產業持續前進的力量。", image: event.assets.processLegacy },
+  { number: "01", title: "源頭", subtitle: "產地・藥材・溯源", body: "從產地環境、品種與供應鏈開始理解藥材，讓每一步都有跡可循。", image: event.assets.originQuality, position: "18% center", alt: "藥材、產地標記與溯源研究筆記插畫" },
+  { number: "02", title: "品質", subtitle: "辨識・檢驗・把關", body: "以專業辨識與檢驗建立標準，讓經驗與科學共同守住品質。", image: event.assets.originQuality, position: "82% center", alt: "藥用植物、檢驗器材與品質研究插畫" },
+  { number: "03", title: "製程", subtitle: "設備・流程・標準化", body: "走進現代製藥現場，看藥材如何透過精密設備形成穩定製程。", image: event.assets.processLegacy, position: "18% center", alt: "現代中藥製程設備與標準化流程插畫" },
+  { number: "04", title: "傳承", subtitle: "交流・知能・產業發展", body: "在學習與交流之間累積共同語言，讓專業成為中藥產業持續前進的力量。", image: event.assets.processLegacy, position: "82% center", alt: "不同世代中藥從業人員交流與傳承插畫" },
 ] as const;
 
 const highlights = [
@@ -183,6 +186,8 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
 function HerbJourney() {
   const [active, setActive] = useState(0);
   const reducedMotion = useReducedMotion();
+  const showPrevious = () => setActive((current) => (current - 1 + journeys.length) % journeys.length);
+  const showNext = () => setActive((current) => (current + 1) % journeys.length);
   return (
     <section className="section journey-section" aria-labelledby="journey-title">
       <div className="section-shell">
@@ -191,11 +196,12 @@ function HerbJourney() {
           <div className="journey-visual" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.img
-                key={journeys[active].image}
+                key={`${journeys[active].number}-${journeys[active].image}`}
                 src={journeys[active].image}
                 width={active < 2 ? 1400 : 1400}
                 height={active < 2 ? 933 : 747}
-                alt={active < 2 ? "藥材、產地標記與品質檢驗的植物研究筆記插畫" : "現代中藥製程與不同世代從業人員交流插畫"}
+                alt={journeys[active].alt}
+                style={{ objectPosition: journeys[active].position }}
                 loading="lazy"
                 initial={reducedMotion ? false : { opacity: 0, scale: 1.02 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -203,6 +209,15 @@ function HerbJourney() {
                 transition={{ duration: 0.4 }}
               />
             </AnimatePresence>
+            <div className="journey-controls" aria-label="旅程圖片切換">
+              <button type="button" onClick={showPrevious} aria-label="上一張"><ChevronLeft aria-hidden="true" /></button>
+              <div className="journey-dots" role="group" aria-label="選擇旅程圖片">
+                {journeys.map((item, index) => (
+                  <button type="button" key={item.number} className={active === index ? "active" : ""} onClick={() => setActive(index)} aria-label={`顯示第 ${index + 1} 張：${item.title}`} aria-pressed={active === index} />
+                ))}
+              </div>
+              <button type="button" onClick={showNext} aria-label="下一張"><ChevronRight aria-hidden="true" /></button>
+            </div>
             <span className="journey-caption">{journeys[active].number} / 04 · {journeys[active].subtitle}</span>
           </div>
           <div className="journey-steps">
@@ -357,6 +372,16 @@ function App() {
                 </motion.article>
               ))}
             </div>
+            <motion.aside className="visit-rules" aria-labelledby="visit-rules-title" {...reveal}>
+              <div className="visit-rules-heading">
+                <p className="eyebrow">BEFORE YOU ENTER</p>
+                <h3 id="visit-rules-title">進入廠區前，請先留意</h3>
+              </div>
+              <div className="visit-rules-grid">
+                <article><span><CupSoda aria-hidden="true" /></span><div><strong>全廠區禁止飲食</strong><p>可攜帶個人隨身飲用水（不含手搖飲、咖啡等飲料）或藥品。</p></div></article>
+                <article><span><CameraOff aria-hidden="true" /></span><div><strong>廠區內禁止拍照</strong><p>因涉及營業機密，廠區內會議室及參觀路線禁止拍照。</p></div></article>
+              </div>
+            </motion.aside>
           </div>
         </section>
 
@@ -405,7 +430,7 @@ function App() {
           <div className="section-shell meeting-layout">
             <div className="meeting-heading">
               <SectionHeading eyebrow="GENERAL MEETING" title="年度重要會議，讓共同的方向更清楚" />
-              <img src={event.assets.logo} width="645" height="645" loading="lazy" alt="台灣中藥權益促進會" />
+              <img className="meeting-emblem" src={event.assets.logo} width="220" height="220" loading="lazy" alt="台灣中藥權益促進會標誌" />
             </div>
             <div className="meeting-content">
               <ol className="meeting-agenda">

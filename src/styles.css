@@ -135,9 +135,17 @@ h3 { font-size: 1.35rem; }
 
 .journey-section { padding-bottom: 120px; background: #eff3ec; }
 .journey-layout { display: grid; gap: 24px; }
-.journey-visual { position: relative; overflow: hidden; background: var(--paper); border: 1px solid rgba(31, 45, 38, .08); border-radius: 28px; box-shadow: var(--shadow); }
-.journey-visual img { width: 100%; aspect-ratio: 1.28; object-fit: cover; }
-.journey-caption { position: absolute; left: 14px; bottom: 14px; padding: 8px 12px; color: #fff; background: rgba(31, 45, 38, .82); border-radius: 999px; font-size: .72rem; letter-spacing: .06em; backdrop-filter: blur(8px); }
+.journey-visual { position: relative; width: 100%; max-height: 420px; aspect-ratio: 4 / 3; overflow: hidden; isolation: isolate; background: var(--paper); border: 1px solid rgba(31, 45, 38, .08); border-radius: 28px; box-shadow: var(--shadow); }
+.journey-visual img { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+.journey-controls { position: absolute; top: 12px; right: 12px; z-index: 3; display: flex; padding: 5px; gap: 5px; align-items: center; background: rgba(255, 253, 248, .9); border: 1px solid rgba(31, 45, 38, .12); border-radius: 999px; box-shadow: 0 8px 24px rgba(31, 45, 38, .12); backdrop-filter: blur(10px); }
+.journey-controls > button { display: grid; width: 42px; height: 42px; padding: 0; place-items: center; color: var(--ink); background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+.journey-controls > button:active { background: rgba(111, 159, 124, .18); }
+.journey-controls svg { width: 18px; height: 18px; }
+.journey-dots { display: flex; padding: 0 2px; gap: 5px; align-items: center; }
+.journey-dots button { position: relative; width: 24px; height: 42px; padding: 0; background: transparent; border: 0; cursor: pointer; }
+.journey-dots button::after { content: ""; position: absolute; width: 7px; height: 7px; inset: 50% auto auto 50%; background: #bdc9bf; border-radius: 50%; transform: translate(-50%, -50%); transition: width .2s, background .2s; }
+.journey-dots button.active::after { width: 20px; background: var(--herb); border-radius: 999px; }
+.journey-caption { position: absolute; left: 14px; bottom: 14px; z-index: 2; max-width: calc(100% - 28px); padding: 8px 12px; overflow: hidden; color: #fff; background: rgba(31, 45, 38, .82); border-radius: 999px; font-size: .72rem; letter-spacing: .06em; text-overflow: ellipsis; white-space: nowrap; backdrop-filter: blur(8px); }
 .journey-steps { position: relative; display: grid; gap: 10px; }
 .journey-steps::before { content: ""; position: absolute; top: 20px; bottom: 20px; left: 27px; width: 1px; background: var(--line); }
 .journey-step { position: relative; display: grid; grid-template-columns: 50px 1fr; width: 100%; padding: 18px 16px; gap: 14px; text-align: left; color: var(--ink); background: transparent; border: 1px solid transparent; border-radius: 20px; cursor: pointer; }
@@ -157,6 +165,16 @@ h3 { font-size: 1.35rem; }
 .highlight-card.process::after { border: 28px solid var(--line); background: transparent; }
 .highlight-card.legacy::after { background: var(--herb); opacity: .24; border-radius: 42% 58% 34% 66%; }
 .highlight-card > svg { width: 34px; height: 34px; margin: 22px 0 38px; color: #52775f; }
+.visit-rules { display: grid; margin-top: 24px; padding: 24px; gap: 22px; color: #fffdf8; background: var(--forest); border-radius: 28px; box-shadow: 0 20px 56px rgba(23, 57, 43, .16); }
+.visit-rules-heading .eyebrow { margin-bottom: 8px; color: #c9dfcb; }
+.visit-rules-heading h3 { margin: 0; color: #fffdf8; font-size: clamp(1.55rem, 6vw, 2.15rem); }
+.visit-rules-grid { display: grid; gap: 10px; }
+.visit-rules-grid article { display: grid; padding: 16px; grid-template-columns: 42px 1fr; gap: 12px; color: var(--ink); background: #fffdf8; border: 1px solid rgba(255, 255, 255, .14); border-radius: 18px; }
+.visit-rules-grid article > span { display: grid; width: 42px; height: 42px; place-items: center; color: #713e2f; background: var(--yellow); border-radius: 14px; }
+.visit-rules-grid svg { width: 21px; height: 21px; }
+.visit-rules-grid strong { display: block; margin-bottom: 3px; font-family: var(--serif); font-size: 1.06rem; }
+.visit-rules-grid p { margin: 0; color: #5d6962; font-size: .9rem; line-height: 1.65; }
+.visit-rules-grid article:last-child > span { color: #fffdf8; background: var(--clay); }
 .highlight-card h3 { max-width: 260px; margin-bottom: 10px; }
 .highlight-card p { max-width: 320px; margin: 0; color: var(--muted); }
 .card-index { position: absolute; top: 20px; right: 22px; font-family: var(--serif); font-size: .75rem; }
@@ -248,7 +266,7 @@ h3 { font-size: 1.35rem; }
 
 .meeting-section { background: #e8eee6; }
 .meeting-layout { display: grid; gap: 40px; }
-.meeting-heading img { width: 190px; margin-top: 20px; mix-blend-mode: multiply; }
+.meeting-heading img { width: min(180px, 48vw); height: auto; aspect-ratio: 1 / 1; object-fit: contain; margin-top: 20px; mix-blend-mode: normal; }
 .meeting-content { display: grid; gap: 20px; }
 .meeting-agenda { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(31, 45, 38, .2); }
 .meeting-agenda li { display: grid; padding: 18px 0; gap: 14px; grid-template-columns: 60px 1fr; border-bottom: 1px solid rgba(31, 45, 38, .2); }
@@ -321,6 +339,8 @@ h3 { font-size: 1.35rem; }
   .registration-strip { grid-template-columns: auto 1fr; column-gap: 14px; align-items: center; }
   .intro-grid { grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr); align-items: center; }
   .highlight-grid { grid-template-columns: 1fr 1fr; }
+  .visit-rules { grid-template-columns: minmax(220px, .55fr) minmax(0, 1.45fr); align-items: center; }
+  .visit-rules-grid { grid-template-columns: 1fr 1fr; }
   .highlight-card:nth-child(2), .highlight-card:nth-child(3) { min-height: 280px; }
   .speaker-layout { grid-template-columns: 1fr 1fr; }
   .schedule-layout { grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr); align-items: start; }
@@ -352,7 +372,7 @@ h3 { font-size: 1.35rem; }
   .scroll-cue { position: absolute; display: inline-flex; right: 34px; bottom: 46px; gap: 8px; align-items: center; writing-mode: vertical-rl; color: #667068; font-size: .72rem; letter-spacing: .12em; }
   .journey-layout { grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr); align-items: start; gap: 46px; }
   .journey-visual { position: sticky; top: 104px; }
-  .journey-visual img { aspect-ratio: 1.28; }
+  .journey-visual { max-height: none; aspect-ratio: 4 / 3; }
   .journey-steps { gap: 18px; padding: 20vh 0; }
   .journey-step { min-height: 190px; padding: 30px 26px; align-content: start; }
   .journey-step strong { font-size: 1.8rem; }
