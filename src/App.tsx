@@ -154,10 +154,11 @@ function Hero() {
               <li><span aria-hidden="true">01</span><strong>中藥材質量管理與源頭管理教育訓練</strong></li>
               <li><span aria-hidden="true">02</span><strong>科達製藥參訪</strong></li>
               <li><span aria-hidden="true">03</span><strong>第三屆第二次會員大會</strong></li>
+              <li><span aria-hidden="true">04</span><strong>會員餐會</strong></li>
             </ol>
           </div>
           <div className="hero-tags" aria-label="活動摘要">
-            <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會</span>
+            <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會・會員餐會</span>
           </div>
           <div className="button-row hero-actions">
             <a className="button button-primary" href="#schedule">查看行程<ArrowDown size={18} aria-hidden="true" /></a>
@@ -291,10 +292,13 @@ function TransportSelector({ onCopy }: { onCopy: (value: string, label: string) 
         </motion.div>
       </AnimatePresence>
       <div className="location-grid">
-        {[event.locations.koda, event.locations.amour].map((location) => (
-          <article className="location-card" key={location.name}>
+        {[
+          { ...event.locations.koda, label: "上午報到・教育訓練", tone: "koda" },
+          { ...event.locations.amour, label: "會員餐會・會員大會", tone: "amour" },
+        ].map((location) => (
+          <article className={`location-card location-card-${location.tone}`} key={location.name}>
             <span className="location-icon"><MapPin aria-hidden="true" /></span>
-            <div><h3>{location.name}</h3><p>{location.address}</p></div>
+            <div><span className="location-label">{location.label}</span><h3>{location.name}</h3><p>{location.address}</p></div>
             <div className="mini-actions">
               <button type="button" onClick={() => onCopy(location.address, `${location.name}地址`)}><Clipboard size={15} aria-hidden="true" />複製地址</button>
               <a href={location.mapUrl} target="_blank" rel="noreferrer"><ExternalLink size={15} aria-hidden="true" />Google Maps<span className="sr-only">（另開新視窗）</span></a>

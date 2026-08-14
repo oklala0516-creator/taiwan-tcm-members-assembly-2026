@@ -72,12 +72,13 @@ export function Countdown() {
       </div>
 
       <div className={`registration-strip ${registrationPhase === "urgent" ? "is-urgent" : ""}`} aria-live="polite">
-        <strong>{registrationPhase === "urgent" ? "報名即將截止" : "報名截止倒數"}</strong>
+        <span className="registration-kicker">報名截止日</span>
+        <strong>{registrationPhase === "closed" ? "線上報名已截止" : "9 月 5 日 23:59"}</strong>
         {registrationPhase === "closed" ? (
           <span>線上報名期限已截止，如需參加請聯絡主辦單位確認。</span>
         ) : (
           <span>
-            請於 9 月 5 日前完成報名與繳費，剩餘 {registrationTime.days} 天 {twoDigits(registrationTime.hours)} 時 {twoDigits(registrationTime.minutes)} 分。
+            請於截止前完成報名與繳費，剩餘 {registrationTime.days} 天 {twoDigits(registrationTime.hours)} 時 {twoDigits(registrationTime.minutes)} 分。
           </span>
         )}
       </div>

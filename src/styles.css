@@ -115,9 +115,11 @@ h3 { font-size: 1.35rem; }
 .countdown-unit strong { display: block; font-family: var(--serif); font-size: clamp(1.9rem, 10vw, 3.3rem); font-weight: 700; line-height: 1; }
 .countdown-unit span { color: var(--muted); font-size: .72rem; }
 .countdown-unit.is-seconds { border-color: rgba(241, 213, 104, .9); box-shadow: inset 0 -4px 0 rgba(241, 213, 104, .54); }
-.registration-strip { display: grid; margin-top: 8px; padding: 12px 15px; gap: 3px; color: #4e5d55; background: rgba(220, 231, 221, .8); border: 1px solid rgba(111, 159, 124, .22); border-radius: 15px; font-size: .81rem; }
-.registration-strip.is-urgent { background: rgba(241, 213, 104, .62); border-color: rgba(198, 164, 42, .28); }
-.registration-strip strong { color: var(--ink); }
+.registration-strip { display: grid; margin-top: 10px; padding: 15px 16px; gap: 4px; color: #4e5d55; background: linear-gradient(135deg, rgba(255, 250, 229, .96), rgba(242, 224, 167, .75)); border: 1px solid rgba(198, 164, 42, .48); border-left: 5px solid var(--clay); border-radius: 15px; box-shadow: 0 10px 20px rgba(75, 61, 29, .08); font-size: .82rem; }
+.registration-strip.is-urgent { background: linear-gradient(135deg, #fff6c8, rgba(241, 213, 104, .84)); border-color: rgba(171, 103, 70, .58); }
+.registration-kicker { width: fit-content; padding: 3px 8px; color: #854537; background: rgba(255, 255, 255, .7); border-radius: 999px; font-size: .67rem; font-weight: 900; letter-spacing: .08em; }
+.registration-strip strong { color: var(--forest); font-family: var(--serif); font-size: clamp(1.28rem, 5vw, 1.6rem); font-weight: 700; line-height: 1.15; }
+.registration-strip > span:last-child { line-height: 1.55; }
 .event-state { text-align: center; }
 .event-state-title { display: flex; margin-bottom: 8px; gap: 10px; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.6rem; font-weight: 700; }
 .event-state .button-row { justify-content: center; margin-top: 18px; }
@@ -223,10 +225,19 @@ h3 { font-size: 1.35rem; }
 .transport-result li svg { flex: 0 0 auto; margin-top: 5px; color: #4b7659; }
 .text-link { display: inline-flex; gap: 7px; align-items: center; color: #42644e; font-weight: 800; text-decoration: underline; text-decoration-color: var(--sprout); text-underline-offset: 4px; }
 .location-grid { display: grid; gap: 10px; }
-.location-card { display: grid; padding: 17px; gap: 13px; grid-template-columns: 38px 1fr; background: var(--cream); border: 1px solid var(--line); border-radius: 18px; }
-.location-card h3 { margin-bottom: 6px; font-size: 1.05rem; }
-.location-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+.location-card { position: relative; display: grid; overflow: hidden; padding: 18px 17px; gap: 13px; align-items: start; grid-template-columns: 38px 1fr; background: var(--cream); border: 1px solid var(--line); border-radius: 18px; }
+.location-card::before { position: absolute; inset: 0 0 auto; height: 4px; content: ""; background: #6f9f7c; }
+.location-card-koda { background: linear-gradient(135deg, #faf7ec, rgba(220, 235, 218, .78)); border-color: rgba(75, 118, 89, .25); }
+.location-card-amour { background: linear-gradient(135deg, #fff9ef, rgba(246, 224, 179, .67)); border-color: rgba(171, 103, 70, .22); }
+.location-card-amour::before { background: var(--clay); }
+.location-label { display: inline-flex; margin-bottom: 6px; padding: 3px 8px; color: #315b42; background: rgba(203, 229, 199, .75); border-radius: 999px; font-size: .66rem; font-weight: 900; letter-spacing: .06em; }
+.location-card-amour .location-label { color: #8a493b; background: rgba(245, 211, 135, .58); }
+.location-card h3 { margin: 0 0 5px; color: var(--forest); font-family: var(--serif); font-size: clamp(1.16rem, 4.5vw, 1.35rem); font-weight: 700; line-height: 1.2; }
+.location-card-amour h3 { color: #8a493b; }
+.location-card p { margin: 0; color: #52665a; font-size: .86rem; line-height: 1.55; }
+.location-card-amour p { color: #766047; }
 .location-icon { display: grid; width: 38px; height: 38px; place-items: center; background: var(--sprout); border-radius: 50%; }
+.location-card-amour .location-icon { background: #f1d568; }
 .location-icon svg { width: 19px; }
 .mini-actions { display: flex; grid-column: 2; gap: 8px; flex-wrap: wrap; }
 .mini-actions button, .mini-actions a { display: inline-flex; min-height: 38px; padding: 0 10px; gap: 6px; align-items: center; color: var(--ink); background: var(--paper); border: 1px solid rgba(31, 45, 38, .13); border-radius: 10px; cursor: pointer; font-size: .78rem; font-weight: 700; }
