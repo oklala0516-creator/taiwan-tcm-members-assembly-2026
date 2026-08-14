@@ -56,7 +56,7 @@ export default function Home() {
 
   return <main>
     <header className="site-header">
-      <a className="brand" href="#top" aria-label="回到頁首"><span className="brand-mark">藥</span><span>台灣中藥權益促進會</span></a>
+      <a className="brand" href="#top" aria-label="回到頁首"><img className="brand-mark" src="/brand-mark.png" alt="" /><span>台灣中藥權益促進會</span></a>
       <nav aria-label="主要導覽"><a href="#about">活動主軸</a><a href="#schedule">一日行程</a><a href="#venues">交通場地</a><a href="#guide">行前須知</a></nav>
       <button className="header-cta" onClick={downloadCalendar}>加入行事曆</button>
     </header>
