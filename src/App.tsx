@@ -13,7 +13,6 @@ import {
   ExternalLink,
   Factory,
   FileText,
-  FlaskConical,
   Leaf,
   Mail,
   MapPin,
@@ -417,11 +416,6 @@ function App() {
 
         <section className="section speaker-section" aria-labelledby="speaker-title">
           <div className="section-shell speaker-layout">
-            <motion.div className="speaker-art" {...reveal}>
-              <div className="speaker-silhouette" aria-hidden="true"><span className="head" /><span className="body" /></div>
-              <div className="speaker-desk" aria-hidden="true"><ScrollText /><FlaskConical /><Leaf /></div>
-              <div className="speaker-lines" aria-hidden="true" />
-            </motion.div>
             <motion.div {...reveal}>
               <p className="eyebrow">EDUCATION</p>
               <h2 id="speaker-title">讓品質管理，成為看得見的專業</h2>
@@ -444,16 +438,7 @@ function App() {
 
         <section className="section meeting-section" id="meeting">
           <div className="section-shell meeting-layout">
-            <div className="meeting-heading">
-              <SectionHeading eyebrow="GENERAL MEETING" title="年度重要會議，讓共同的方向更清楚" />
-              <img className="meeting-emblem" src={event.assets.logo} width="220" height="220" loading="lazy" alt="台灣中藥權益促進會標誌" />
-            </div>
             <div className="meeting-content">
-              <ol className="meeting-agenda">
-                <li><span>16:00</span><strong>第三屆第五次理監事會議</strong></li>
-                <li><span>16:30</span><strong>第三屆第二次會員大會</strong></li>
-                <li><span>18:00</span><strong>餐敘聯誼</strong></li>
-              </ol>
               <div className="reminder-card">
                 <h3>重要提醒</h3>
                 <ul>
