@@ -93,8 +93,8 @@ function Header() {
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="header-inner">
         <a className="brand" href="#top" aria-label="台灣中藥權益促進會活動首頁">
-          <img src={event.assets.mark} width="52" height="52" alt="" />
-          <span>台灣中藥權益促進會</span>
+          <span className="brand-mark"><img src={event.assets.mark} width="52" height="52" alt="" /></span>
+          <span className="brand-name">台灣中藥權益促進會<small>TAIWAN CHINESE MEDICINE</small></span>
         </a>
         <nav className="desktop-nav" aria-label="主要導覽">
           {navItems.map(([id, label]) => <a className={active === id ? "active" : ""} href={`#${id}`} key={id}>{label}</a>)}
@@ -134,10 +134,20 @@ function Hero() {
       <div className="hero-orbit orbit-two" aria-hidden="true" />
       <div className="hero-inner">
         <motion.div className="hero-copy" initial={reducedMotion ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }}>
-          <div className="hero-brandline"><img src={event.assets.logo} width="645" height="645" alt="台灣中藥權益促進會" /></div>
-          <p className="kicker"><span /> 一株藥材的旅程</p>
-          <h1>{event.headline}</h1>
-          <p className="hero-subtitle">{event.title}</p>
+          <div className="hero-brandline">
+            <span className="hero-brandmark"><img src={event.assets.logo} width="1254" height="1254" alt="" /></span>
+            <span><strong>{event.organizer}</strong><small>2026 INDUSTRY VISIT &amp; ANNUAL MEETING</small></span>
+          </div>
+          <p className="kicker"><span /> ROOT TO REMEDY・一株藥材的旅程</p>
+          <h1 aria-label={event.headline}>
+            <span className="title-line title-line-one">從一株藥材，</span>
+            <span className="title-line title-line-two">看見品質的</span>
+            <span className="title-line title-line-three"><em>每一道</em>堅持</span>
+          </h1>
+          <div className="hero-subtitle">
+            <span className="hero-subtitle-index" aria-hidden="true">01</span>
+            <p><strong>中藥材質量管理與源頭管理</strong><span>教育訓練暨科達製藥參訪</span></p>
+          </div>
           <div className="hero-tags" aria-label="活動摘要">
             <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會</span>
           </div>
@@ -148,6 +158,8 @@ function Hero() {
         </motion.div>
         <motion.div className="hero-art" style={{ y: artY, opacity: artOpacity }}>
           <img src={event.assets.hero} width="1536" height="1024" alt="藥用植物由產地、品質檢驗走向現代製藥設備的旅程插畫" fetchPriority="high" />
+          <div className="hero-art-caption" aria-hidden="true"><span>FROM SOURCE</span><strong>源頭 × 品質 × 製程</strong></div>
+          <span className="hero-art-year" aria-hidden="true">2026</span>
           <motion.span className="floating-leaf leaf-one" animate={reducedMotion ? undefined : { y: [0, -8, 0], rotate: [-3, 2, -3] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}><Leaf aria-hidden="true" /></motion.span>
           <motion.span className="floating-leaf leaf-two" animate={reducedMotion ? undefined : { y: [0, 10, 0], rotate: [3, -3, 3] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}><Sprout aria-hidden="true" /></motion.span>
         </motion.div>

@@ -59,8 +59,8 @@ export const event = {
     annualMembership: 1800,
   },
   assets: {
-    logo: `${base}assets/association-logo.webp`,
-    mark: `${base}assets/association-mark.png`,
+    logo: `${base}assets/association-mark-v2.png`,
+    mark: `${base}assets/association-mark-v2.png`,
     hero: `${base}assets/hero-journey.webp`,
     originQuality: `${base}assets/origin-quality.webp`,
     processLegacy: `${base}assets/process-legacy.webp`,
