@@ -61,7 +61,7 @@ export const event = {
   assets: {
     logo: `${base}assets/association-mark-v2.png`,
     mark: `${base}assets/association-mark-v2.png`,
-    hero: `${base}assets/hero-journey.webp`,
+    hero: `${base}assets/hero-ginseng.png`,
     originQuality: `${base}assets/origin-quality.webp`,
     processLegacy: `${base}assets/process-legacy.webp`,
   },
