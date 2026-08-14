@@ -147,9 +147,12 @@ function Hero() {
             <span className="title-line title-line-two">看見品質的</span>
             <span className="title-line title-line-three"><em>每一道</em>堅持</span>
           </h1>
-          <div className="hero-subtitle">
-            <span className="hero-subtitle-index" aria-hidden="true">01</span>
-            <p><strong>中藥材質量管理與源頭管理</strong><span>教育訓練暨科達製藥參訪</span></p>
+          <div className="hero-subtitle" aria-label="活動內容">
+            <ol className="hero-program-list">
+              <li><span aria-hidden="true">01</span><strong>中藥材質量管理與源頭管理</strong></li>
+              <li><span aria-hidden="true">02</span><strong>教育訓練暨科達製藥參訪</strong></li>
+              <li><span aria-hidden="true">03</span><strong>第三屆第二次會員大會</strong></li>
+            </ol>
           </div>
           <div className="hero-tags" aria-label="活動摘要">
             <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會</span>
