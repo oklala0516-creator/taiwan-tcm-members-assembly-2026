@@ -94,6 +94,17 @@ function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navigateTo = (id: string) => {
+    setOpen(false);
+    window.history.pushState(null, "", `#${id}`);
+    window.requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  };
+
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="header-inner">
@@ -118,7 +129,7 @@ function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
           >
-            {navItems.map(([id, label]) => <a href={`#${id}`} key={id} onClick={() => setOpen(false)}>{label}<ChevronRight size={18} aria-hidden="true" /></a>)}
+            {navItems.map(([id, label]) => <a href={`#${id}`} key={id} onClick={(event) => { event.preventDefault(); navigateTo(id); }}>{label}<ChevronRight size={18} aria-hidden="true" /></a>)}
           </motion.nav>
         )}
       </AnimatePresence>
