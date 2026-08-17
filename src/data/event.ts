@@ -88,7 +88,7 @@ export const event = {
 
 export const schedule: ScheduleItem[] = [
   { id: "arrival", start: "08:30", end: "08:40", title: "集合與接駁", place: "桃園高鐵站 5 號出口／自行前往", detail: "搭乘接駁車者請於 08:40 集合；自行前往者請於 09:30 前抵達科達製藥。", important: true },
-  { id: "checkin", start: "09:30", end: "10:00", title: "報到", place: "科達製藥會議室", detail: "完成活動報到，會員可同時繳交常年會費 1,800 元。" },
+  { id: "checkin", start: "09:30", end: "10:00", title: "報到", place: "科達製藥會議室", detail: "繳交年費 1,800 元＋領取伴手禮" },
   { id: "training", start: "10:00", end: "12:00", title: "中藥材質量管理與源頭管理", place: "科達製藥會議室", detail: "講師：科達製藥總經理特助 陳世豪。" },
   { id: "lunch", start: "12:00", end: "13:00", title: "午餐", place: "科達製藥員工餐廳", detail: "午餐為便當，稍作休息後進入廠區參訪。" },
   { id: "visit", start: "13:00", end: "15:00", title: "科達製藥廠區參訪", place: "科達製藥廠區", detail: "實地觀察現代中藥製程與品質管理。" },

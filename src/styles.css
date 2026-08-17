@@ -211,6 +211,15 @@ h3 { font-size: 1.35rem; }
 .timeline-detail { grid-column: 2; margin: 3px 10px 0 20px; overflow: hidden; color: var(--muted); }
 .timeline-detail p { margin: 7px 0; }
 .timeline-detail p:first-child { display: flex; gap: 6px; align-items: center; color: #4c6a58; font-weight: 700; }
+.gift-reveal { position: relative; display: flex; max-width: 320px; min-height: 72px; padding: 11px 14px; gap: 12px; align-items: center; margin: 12px 0 10px; overflow: hidden; color: var(--ink); background: linear-gradient(135deg, rgba(241, 213, 104, .28), rgba(203, 229, 199, .45)); border: 1px solid rgba(184, 95, 69, .16); border-radius: 16px; }
+.gift-reveal::after { position: absolute; width: 66px; height: 66px; top: -34px; right: -18px; content: ""; background: rgba(241, 213, 104, .35); border-radius: 50%; }
+.gift-icon { position: relative; display: grid; width: 48px; height: 48px; flex: 0 0 auto; z-index: 1; place-items: center; color: #8a493b; background: var(--yellow); border-radius: 14px; box-shadow: 0 8px 18px rgba(138, 73, 59, .16); transform-origin: bottom center; }
+.gift-icon::before, .gift-icon::after { position: absolute; width: 6px; height: 6px; content: ""; background: var(--clay); border-radius: 50%; animation: giftSpark .75s ease-out both; }
+.gift-icon::before { top: -5px; right: -4px; box-shadow: -8px -5px 0 -1px var(--yellow); }
+.gift-icon::after { right: -10px; bottom: 4px; animation-delay: .12s; }
+.gift-copy { position: relative; display: grid; z-index: 1; gap: 2px; }
+.gift-copy strong { color: var(--forest); font-family: var(--serif); font-size: 1.02rem; }
+.gift-copy small { color: #5d6d63; font-size: .76rem; }
 
 .transport-section { background: #eef3ec; }
 .transport-card { padding: 16px; background: var(--paper); border: 1px solid rgba(31, 45, 38, .08); border-radius: 28px; box-shadow: var(--shadow); }
@@ -330,6 +339,7 @@ h3 { font-size: 1.35rem; }
 
 @keyframes breathe { 0%, 100% { transform: scale(.85); opacity: .7; } 50% { transform: scale(1.18); opacity: 1; } }
 @keyframes lineGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes giftSpark { from { opacity: 0; transform: scale(.3) translateY(5px); } 55% { opacity: 1; } to { opacity: 0; transform: scale(1.25) translateY(-7px); } }
 
 @media (hover: hover) {
   .button:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(31, 45, 38, .13); }

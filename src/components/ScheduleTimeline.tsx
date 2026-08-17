@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ChevronDown, Clock3, MapPin } from "lucide-react";
+import { ChevronDown, Clock3, Gift, MapPin } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { event, schedule } from "../data/event";
 import { getLiveSchedule } from "../lib/time";
@@ -66,6 +66,22 @@ export function ScheduleTimeline() {
                 >
                   <p><MapPin size={16} aria-hidden="true" />{item.place}</p>
                   <p>{item.detail}</p>
+                  {item.id === "checkin" && (
+                    <motion.div
+                      className="gift-reveal"
+                      initial={reducedMotion ? false : { opacity: 0, scale: 0.82, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      transition={{ type: "spring", stiffness: 320, damping: 20, delay: reducedMotion ? 0 : 0.08 }}
+                    >
+                      <motion.span
+                        className="gift-icon"
+                        aria-hidden="true"
+                        animate={reducedMotion ? {} : { rotate: [0, -8, 8, -4, 0], y: [0, -5, 0] }}
+                        transition={{ duration: 0.72, delay: 0.16 }}
+                      ><Gift size={28} /></motion.span>
+                      <span className="gift-copy"><strong>伴手禮</strong><small>報到時一併領取</small></span>
+                    </motion.div>
+                  )}
                 </motion.div>
               )}
             </AnimatePresence>
