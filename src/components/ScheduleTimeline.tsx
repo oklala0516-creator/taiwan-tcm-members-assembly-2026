@@ -14,7 +14,7 @@ const scheduleEffects = {
   "meeting-checkin": { Icon: ClipboardCheck, label: "會員大會報到", motion: { scale: [0.78, 1.16, 1], rotate: [-5, 5, 0] } },
   board: { Icon: Gavel, label: "理監事會議", motion: { rotate: [-20, 13, -9, 0], y: [0, -5, 0] } },
   assembly: { Icon: UsersRound, label: "會員大會", motion: { scale: [0.72, 1.2, 1], y: [8, -4, 0] } },
-  dinner: { Icon: PartyPopper, label: "餐敘聯誼", motion: { rotate: [-12, 12, -5, 0], scale: [0.82, 1.18, 1] } },
+  dinner: { Icon: PartyPopper, label: "餐會聯誼", motion: { rotate: [-12, 12, -5, 0], scale: [0.82, 1.18, 1] } },
   return: { Icon: TrainFront, label: "返回桃園高鐵站", motion: { x: [20, 0, -8, 0], rotate: [0, 3, -2, 0] } },
 };
 

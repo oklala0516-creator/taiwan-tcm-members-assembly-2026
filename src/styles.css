@@ -386,7 +386,7 @@ h3 { font-size: 1.35rem; }
   .document-grid { grid-template-columns: repeat(3, 1fr); }
   .contact-card { display: grid; padding: 54px; grid-template-columns: 1.2fr .8fr; gap: 26px 42px; }
   .contact-person { margin: 0; align-self: end; }
-  .contact-actions { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  .contact-actions { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
   .site-footer { padding: 40px 36px 44px; grid-template-columns: 1fr auto; align-items: end; }
   .mobile-action-bar { display: none; }
   .toast { bottom: 30px; }

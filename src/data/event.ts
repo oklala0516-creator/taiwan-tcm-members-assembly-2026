@@ -18,6 +18,7 @@ export const event = {
   start: "2026-09-19T08:40:00+08:00",
   end: "2026-09-19T20:00:00+08:00",
   registrationDeadline: "2026-09-05T23:59:59+08:00",
+  registrationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc-x2BfJ3onp3OI0NIDR4yrJOtwR9vThWV-zVOltStiM7rYUg/viewform",
   timezone: "Asia/Taipei",
   venue: "桃園平鎮",
   organizer: "台灣中藥權益促進會",
@@ -87,15 +88,15 @@ export const event = {
 } as const;
 
 export const schedule: ScheduleItem[] = [
-  { id: "arrival", start: "08:30", end: "08:40", title: "集合與接駁", place: "桃園高鐵站 5 號出口／自行前往", detail: "搭乘接駁車者請於 08:40 集合；自行前往者請於 09:30 前抵達科達製藥。", important: true },
+  { id: "arrival", start: "08:30", end: "08:40", title: "集合與接駁", place: "桃園高鐵站 5 號出口／自行前往", detail: "自行前往或 08:40 於桃園高鐵站 5 號出口搭乘接駁車。", important: true },
   { id: "checkin", start: "09:30", end: "10:00", title: "報到", place: "科達製藥會議室", detail: "繳交年費 1,800 元＋領取伴手禮" },
   { id: "training", start: "10:00", end: "12:00", title: "中藥材質量管理與源頭管理", place: "科達製藥會議室", detail: "講師：科達製藥總經理特助 陳世豪。" },
-  { id: "lunch", start: "12:00", end: "13:00", title: "午餐", place: "科達製藥員工餐廳", detail: "午餐為便當，稍作休息後進入廠區參訪。" },
+  { id: "lunch", start: "12:00", end: "13:00", title: "午餐", place: "科達製藥員工餐廳", detail: "午餐享用美味便當。" },
   { id: "visit", start: "13:00", end: "15:00", title: "科達製藥廠區參訪", place: "科達製藥廠區", detail: "實地觀察現代中藥製程與品質管理。" },
   { id: "transfer", start: "15:00", end: "15:30", title: "前往 Amour 阿沐餐廳", place: "遊覽車接駁／自行開車", detail: "移動至下午會議及餐敘場地。" },
-  { id: "meeting-checkin", start: "15:30", end: "16:00", title: "會場準備及報到", place: "Amour 阿沐餐廳 K1 廳", detail: "會員大會會場報到與資料準備。" },
+  { id: "meeting-checkin", start: "15:30", end: "16:00", title: "會場準備及報到", place: "Amour 阿沐餐廳 K1 廳", detail: "會場佈置及報到。" },
   { id: "board", start: "16:00", end: "16:30", title: "第三屆第五次理監事會議", place: "Amour 阿沐餐廳 K1 廳", detail: "理事、監事請準時參加。" },
-  { id: "assembly", start: "16:30", end: "18:00", title: "第三屆第二次會員大會", place: "Amour 阿沐餐廳 K1 廳", detail: "年度重要會議；無法出席者請依規定填寫委託書。", important: true },
-  { id: "dinner", start: "18:00", end: "19:30", title: "餐敘聯誼", place: "Amour 阿沐餐廳 K1 廳", detail: "交流聯誼，延續中藥產業夥伴情誼。" },
+  { id: "assembly", start: "16:30", end: "18:00", title: "第三屆第二次會員大會", place: "Amour 阿沐餐廳 K1 廳", detail: "會員大會為年度重要會議，敬請會員踴躍出席。無法出席者請依規定填寫委託書。", important: true },
+  { id: "dinner", start: "18:00", end: "19:30", title: "餐會聯誼", place: "Amour 阿沐餐廳 K1 廳", detail: "交流聯誼，延續中藥產業夥伴情誼。" },
   { id: "return", start: "19:30", end: "20:00", title: "接駁車前往桃園高鐵站", place: "Amour 阿沐餐廳 → 桃園高鐵站", detail: "搭乘接駁車者請依現場引導上車。", important: true },
 ];

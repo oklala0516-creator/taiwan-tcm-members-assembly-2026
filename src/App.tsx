@@ -165,15 +165,15 @@ function Hero() {
               <li><span aria-hidden="true">01</span><strong>中藥材質量管理與源頭管理教育訓練</strong></li>
               <li><span aria-hidden="true">02</span><strong>科達製藥參訪</strong></li>
               <li><span aria-hidden="true">03</span><strong>第三屆第二次會員大會</strong></li>
-              <li><span aria-hidden="true">04</span><strong>會員餐會</strong></li>
+              <li><span aria-hidden="true">04</span><strong>餐會聯誼</strong></li>
             </ol>
           </div>
           <div className="hero-tags" aria-label="活動摘要">
-            <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會・會員餐會</span>
+            <span>{event.dateLabel}</span><span>{event.venue}</span><span>教育訓練・製藥參訪・會員大會・餐會聯誼</span>
           </div>
           <div className="button-row hero-actions">
             <a className="button button-primary" href="#schedule">查看行程<ArrowDown size={18} aria-hidden="true" /></a>
-            <a className="button button-secondary" href="#contact">聯絡主辦報名<ArrowRight size={18} aria-hidden="true" /></a>
+            <a className="button button-secondary" href={event.registrationUrl} target="_blank" rel="noreferrer">立即線上報名<ArrowRight size={18} aria-hidden="true" /></a>
           </div>
         </motion.div>
         <motion.div className="hero-art" style={{ y: artY, opacity: artOpacity }}>
@@ -305,7 +305,7 @@ function TransportSelector({ onCopy }: { onCopy: (value: string, label: string) 
       <div className="location-grid">
         {[
           { ...event.locations.koda, label: "上午報到・教育訓練", tone: "koda" },
-          { ...event.locations.amour, label: "會員餐會・會員大會", tone: "amour" },
+          { ...event.locations.amour, label: "餐會聯誼・會員大會", tone: "amour" },
         ].map((location) => (
           <article className={`location-card location-card-${location.tone}`} key={location.name}>
             <span className="location-icon"><MapPin aria-hidden="true" /></span>
@@ -366,7 +366,7 @@ function FeeCalculator() {
         <span>試算金額</span><strong>NT$ {total.toLocaleString("zh-TW")}</strong>
         <p>實際費用與參加資格以主辦單位確認為準。</p>
       </div>
-      <p className="membership-note">會員可於教育訓練或會員大會報到時繳交常年會費 <strong>1,800 元</strong>。</p>
+      <p className="membership-note">請於教育訓練或會員大會報到時繳交常年會費 <strong>1,800 元</strong>。</p>
     </div>
   );
 }
@@ -483,7 +483,7 @@ function App() {
 
         <section className="section fee-section" aria-labelledby="fee-title">
           <div className="section-shell fee-layout">
-            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>教育訓練與晚宴依會員身分計價；會員、非會員搭乘接駁車皆另加 100 元。</p></div>
+            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>教育訓練與晚宴依會員、非會員身份計價；搭乘接駁車皆另加 100 元。</p></div>
             <FeeCalculator />
           </div>
         </section>
@@ -511,10 +511,11 @@ function App() {
           <div className="section-shell contact-card">
             <div>
               <p className="eyebrow">CONTACT</p><h2>準備好一起出發了嗎？</h2>
-              <p>{registrationClosed ? "線上報名期限已截止，如仍希望參加，請先聯絡主辦單位確認。" : "本次公文未提供可公開使用的線上報名網址，請直接聯絡主辦單位完成報名。"}</p>
+              <p>{registrationClosed ? "線上報名期限已截止，如仍希望參加，請先聯絡主辦單位確認。" : "請於報名截止日前填寫線上表單；如有疑問，可直接聯絡主辦單位。"}</p>
             </div>
             <div className="contact-person"><span>聯絡人</span><strong>{event.contact.name}</strong></div>
             <div className="contact-actions">
+              {!registrationClosed && <a href={event.registrationUrl} target="_blank" rel="noreferrer"><FileText aria-hidden="true" /><span>填寫報名表<small>Google 表單（另開新視窗）</small></span></a>}
               <a href={`tel:${event.contact.phoneHref}`}><Phone aria-hidden="true" /><span>撥打電話<small>{event.contact.phoneDisplay}</small></span></a>
               <a href={`mailto:${event.contact.email}`}><Mail aria-hidden="true" /><span>寄送 Email<small>{event.contact.email}</small></span></a>
               <button type="button" onClick={() => copyText(event.contact.lineId, "LINE ID")}><Clipboard aria-hidden="true" /><span>複製 LINE ID<small>{event.contact.lineId}</small></span></button>
@@ -531,7 +532,7 @@ function App() {
       <nav className="mobile-action-bar" aria-label="快速操作">
         <a href="#schedule"><ScrollText aria-hidden="true" /><span>行程</span></a>
         <button type="button" aria-haspopup="dialog" aria-expanded={navigationOpen} onClick={() => setNavigationOpen(true)}><MapPin aria-hidden="true" /><span>導航</span></button>
-        <a href="#contact"><Phone aria-hidden="true" /><span>{registrationClosed ? "聯絡主辦" : "報名／聯絡"}</span></a>
+        <a href={registrationClosed ? "#contact" : event.registrationUrl} target={registrationClosed ? undefined : "_blank"} rel={registrationClosed ? undefined : "noreferrer"}><Phone aria-hidden="true" /><span>{registrationClosed ? "聯絡主辦" : "線上報名"}</span></a>
       </nav>
 
       <NavigationChooser open={navigationOpen} onClose={() => setNavigationOpen(false)} />
