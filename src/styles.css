@@ -241,6 +241,12 @@ h3 { font-size: 1.35rem; }
 .location-icon svg { width: 19px; }
 .mini-actions { display: flex; grid-column: 2; gap: 8px; flex-wrap: wrap; }
 .mini-actions button, .mini-actions a { display: inline-flex; min-height: 38px; padding: 0 10px; gap: 6px; align-items: center; color: var(--ink); background: var(--paper); border: 1px solid rgba(31, 45, 38, .13); border-radius: 10px; cursor: pointer; font-size: .78rem; font-weight: 700; }
+.route-map-card { max-width: 620px; margin: 18px auto 0; overflow: hidden; background: var(--paper); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 12px 30px rgba(31, 45, 38, .07); }
+.route-map-card a { display: block; background: #fff; }
+.route-map-card img { display: block; width: 100%; height: auto; }
+.route-map-card figcaption { display: flex; padding: 13px 16px; gap: 6px 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.route-map-card figcaption span { color: var(--forest); font-weight: 900; }
+.route-map-card figcaption small { color: var(--muted); font-size: .76rem; }
 .train-note { margin-top: 12px; padding: 15px 17px; background: #f4f0e7; border-radius: 15px; }
 .train-note summary { cursor: pointer; font-weight: 800; }
 .train-note p { margin: 12px 0; color: var(--muted); }

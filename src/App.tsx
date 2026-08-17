@@ -317,6 +317,12 @@ function TransportSelector({ onCopy }: { onCopy: (value: string, label: string) 
           </article>
         ))}
       </div>
+      <figure className="route-map-card">
+        <a href={event.assets.routeMap} target="_blank" rel="noreferrer" aria-label="開啟科達製藥交通指引地圖原圖">
+          <img src={event.assets.routeMap} alt="科達製藥交通指引地圖，標示由中興路或平鎮產業園區服務中心前往科達製藥的建議路線" loading="lazy" decoding="async" />
+        </a>
+        <figcaption><span>科達製藥交通指引地圖</span><small>點擊圖片可查看原圖</small></figcaption>
+      </figure>
       <details className="train-note">
         <summary>高鐵班次參考</summary>
         <p>原始公文附有高鐵班次參考圖，為避免誤讀未另行轉錄。請以完整活動通知中的原圖與高鐵最新班表為準。</p>

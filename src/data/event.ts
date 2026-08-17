@@ -65,6 +65,7 @@ export const event = {
     hero: `${base}assets/hero-ginseng.png`,
     originQuality: `${base}assets/origin-quality.webp`,
     processLegacy: `${base}assets/process-legacy.webp`,
+    routeMap: `${base}assets/koda-route-map.jpg`,
   },
   documents: [
     {
