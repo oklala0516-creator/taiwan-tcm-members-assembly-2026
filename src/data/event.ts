@@ -52,10 +52,11 @@ export const event = {
     lineId: "tcmy2016",
   },
   fees: {
-    memberSelf: 500,
-    memberShuttle: 600,
+    memberTraining: 500,
+    memberDinner: 0,
     nonMemberTraining: 1000,
     nonMemberDinner: 1000,
+    shuttle: 100,
     annualMembership: 1800,
   },
   assets: {

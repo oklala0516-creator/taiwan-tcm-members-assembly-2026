@@ -35,12 +35,14 @@ describe("event timing", () => {
 });
 
 describe("fee calculation", () => {
-  it("uses the documented member transport fees", () => {
+  it("applies the member subsidy and free dinner", () => {
     expect(calculateFee({ member: true, transport: "self", training: true, dinner: true })).toBe(500);
     expect(calculateFee({ member: true, transport: "shuttle", training: true, dinner: true })).toBe(600);
+    expect(calculateFee({ member: true, transport: "self", training: false, dinner: true })).toBe(0);
   });
 
-  it("adds documented non-member activities", () => {
+  it("adds non-member activities and the shuttle fee", () => {
     expect(calculateFee({ member: false, transport: "self", training: true, dinner: true })).toBe(2000);
+    expect(calculateFee({ member: false, transport: "shuttle", training: true, dinner: true })).toBe(2100);
   });
 });

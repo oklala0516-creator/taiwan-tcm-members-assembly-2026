@@ -6,6 +6,9 @@ export type FeeInput = {
 };
 
 export const calculateFee = (input: FeeInput) => {
-  if (input.member) return input.transport === "shuttle" ? 600 : 500;
-  return (input.training ? 1000 : 0) + (input.dinner ? 1000 : 0);
+  const trainingFee = input.training ? (input.member ? 500 : 1000) : 0;
+  const dinnerFee = input.dinner && !input.member ? 1000 : 0;
+  const shuttleFee = input.transport === "shuttle" ? 100 : 0;
+
+  return trainingFee + dinnerFee + shuttleFee;
 };

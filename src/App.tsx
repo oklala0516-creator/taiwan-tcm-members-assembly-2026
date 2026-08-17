@@ -287,8 +287,8 @@ function HerbJourney() {
 function TransportSelector({ onCopy }: { onCopy: (value: string, label: string) => void }) {
   const [mode, setMode] = useState<"shuttle" | "self">("shuttle");
   const details = mode === "shuttle"
-    ? ["08:40 集合", "桃園高鐵站 5 號出口", "會員費用 600 元", "19:30～20:00 接駁返回桃園高鐵站"]
-    : ["09:30 前於科達製藥報到", "會員費用 500 元", event.locations.koda.address, event.locations.amour.address];
+    ? ["08:40 集合", "桃園高鐵站 5 號出口", "接駁費用每人 100 元", "19:30～20:00 接駁返回桃園高鐵站"]
+    : ["09:30 前於科達製藥報到", "自行前往不加收接駁費用", event.locations.koda.address, event.locations.amour.address];
   return (
     <div className="transport-card">
       <div className="segmented" role="group" aria-label="選擇交通方式">
@@ -347,13 +347,13 @@ function FeeCalculator() {
           <label><input type="radio" name="transport" checked={transport === "shuttle"} onChange={() => setTransport("shuttle")} /><span>接駁車</span></label>
           <label><input type="radio" name="transport" checked={transport === "self"} onChange={() => setTransport("self")} /><span>自行前往</span></label>
         </div>
-        {!member && <p className="field-note">公文未列非會員接駁費用，請另向主辦單位確認。</p>}
+        <p className="field-note">會員、非會員搭乘接駁車皆另加 100 元。</p>
       </fieldset>
       <fieldset>
         <legend>參加內容</legend>
         <div className="check-row">
-          <label><input type="checkbox" checked={training} onChange={(e) => setTraining(e.target.checked)} disabled={member} /><span>教育訓練{!member && "・1,000 元"}{member && "・會員費用已含"}</span></label>
-          <label><input type="checkbox" checked={dinner} onChange={(e) => setDinner(e.target.checked)} disabled={member} /><span>晚宴餐敘{!member && "・1,000 元"}{member && "・會員費用已含"}</span></label>
+          <label><input type="checkbox" checked={training} onChange={(e) => setTraining(e.target.checked)} /><span>教育訓練・{member ? "補助後 500 元" : "1,000 元"}</span></label>
+          <label><input type="checkbox" checked={dinner} onChange={(e) => setDinner(e.target.checked)} /><span>晚宴（含伴手禮、晚餐）・{member ? "免費" : "1,000 元"}</span></label>
         </div>
       </fieldset>
       <div className="fee-result" aria-live="polite">
@@ -477,7 +477,7 @@ function App() {
 
         <section className="section fee-section" aria-labelledby="fee-title">
           <div className="section-shell fee-layout">
-            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>依正式公文列示費用計算。會員費用依交通方式計價；非會員依參加內容計價。</p></div>
+            <div><p className="eyebrow">FEE ESTIMATE</p><h2 id="fee-title">費用試算，一次看清楚</h2><p>教育訓練與晚宴依會員身分計價；會員、非會員搭乘接駁車皆另加 100 元。</p></div>
             <FeeCalculator />
           </div>
         </section>
