@@ -24,6 +24,7 @@ import {
   Route,
   ScrollText,
   Sprout,
+  Smartphone,
   Users,
   X,
 } from "lucide-react";
@@ -538,7 +539,7 @@ function App() {
       <nav className="mobile-action-bar" aria-label="快速操作">
         <a href="#schedule"><ScrollText aria-hidden="true" /><span>行程</span></a>
         <button type="button" aria-haspopup="dialog" aria-expanded={navigationOpen} onClick={() => setNavigationOpen(true)}><MapPin aria-hidden="true" /><span>導航</span></button>
-        <a href={registrationClosed ? "#contact" : event.registrationUrl} target={registrationClosed ? undefined : "_blank"} rel={registrationClosed ? undefined : "noreferrer"}><Phone aria-hidden="true" /><span>{registrationClosed ? "聯絡主辦" : "線上報名"}</span></a>
+        <a href={registrationClosed ? "#contact" : event.registrationUrl} target={registrationClosed ? undefined : "_blank"} rel={registrationClosed ? undefined : "noreferrer"}><Smartphone aria-hidden="true" /><span>{registrationClosed ? "聯絡主辦" : "線上報名"}</span></a>
       </nav>
 
       <NavigationChooser open={navigationOpen} onClose={() => setNavigationOpen(false)} />
