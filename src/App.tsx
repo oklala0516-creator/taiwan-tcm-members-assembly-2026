@@ -515,10 +515,15 @@ function App() {
             </div>
             <div className="contact-person"><span>聯絡人</span><strong>{event.contact.name}</strong></div>
             <div className="contact-actions">
-              {!registrationClosed && <a href={event.registrationUrl} target="_blank" rel="noreferrer"><FileText aria-hidden="true" /><span>填寫報名表<small>Google 表單（另開新視窗）</small></span></a>}
-              <a href={`tel:${event.contact.phoneHref}`}><Phone aria-hidden="true" /><span>撥打電話<small>{event.contact.phoneDisplay}</small></span></a>
-              <a href={`mailto:${event.contact.email}`}><Mail aria-hidden="true" /><span>寄送 Email<small>{event.contact.email}</small></span></a>
-              <button type="button" onClick={() => copyText(event.contact.lineId, "LINE ID")}><Clipboard aria-hidden="true" /><span>複製 LINE ID<small>{event.contact.lineId}</small></span></button>
+              {!registrationClosed && <a className="registration-primary" href={event.registrationUrl} target="_blank" rel="noreferrer"><FileText aria-hidden="true" /><span>填寫線上報名表<small>本活動以 Google 表單報名為主</small></span><ArrowRight aria-hidden="true" /></a>}
+              <div className="contact-backup">
+                <p>備用聯絡方式 <small>如有報名問題再使用</small></p>
+                <div className="contact-backup-grid">
+                  <a href={`tel:${event.contact.phoneHref}`}><Phone aria-hidden="true" /><span>電話<small>{event.contact.phoneDisplay}</small></span></a>
+                  <a href={`mailto:${event.contact.email}`}><Mail aria-hidden="true" /><span>Email<small>{event.contact.email}</small></span></a>
+                  <button type="button" onClick={() => copyText(event.contact.lineId, "LINE ID")}><Clipboard aria-hidden="true" /><span>LINE ID<small>{event.contact.lineId}</small></span></button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
