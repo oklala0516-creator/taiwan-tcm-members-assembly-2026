@@ -69,17 +69,18 @@ export function ScheduleTimeline() {
                   {item.id === "checkin" && (
                     <motion.div
                       className="gift-reveal"
-                      initial={reducedMotion ? false : { opacity: 0, scale: 0.82, y: 10 }}
+                      role="img"
+                      aria-label="伴手禮"
+                      initial={reducedMotion ? false : { opacity: 0, scale: 0.55, y: 16 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
-                      transition={{ type: "spring", stiffness: 320, damping: 20, delay: reducedMotion ? 0 : 0.08 }}
+                      transition={{ type: "spring", stiffness: 360, damping: 17, delay: reducedMotion ? 0 : 0.06 }}
                     >
                       <motion.span
                         className="gift-icon"
                         aria-hidden="true"
-                        animate={reducedMotion ? {} : { rotate: [0, -8, 8, -4, 0], y: [0, -5, 0] }}
-                        transition={{ duration: 0.72, delay: 0.16 }}
-                      ><Gift size={28} /></motion.span>
-                      <span className="gift-copy"><strong>伴手禮</strong><small>報到時一併領取</small></span>
+                        animate={reducedMotion ? {} : { rotate: [0, -10, 10, -5, 0], y: [0, -8, 0], scale: [1, 1.16, 1] }}
+                        transition={{ duration: 0.82, delay: 0.12 }}
+                      ><Gift size={42} strokeWidth={2.4} /></motion.span>
                     </motion.div>
                   )}
                 </motion.div>
