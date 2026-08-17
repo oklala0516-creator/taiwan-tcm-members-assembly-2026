@@ -517,7 +517,7 @@ function App() {
             <div className="contact-actions">
               {!registrationClosed && <a className="registration-primary" href={event.registrationUrl} target="_blank" rel="noreferrer"><FileText aria-hidden="true" /><span>填寫線上報名表<small>本活動以 Google 表單報名為主</small></span><ArrowRight aria-hidden="true" /></a>}
               <div className="contact-backup">
-                <p>備用聯絡方式 <small>如有報名問題再使用</small></p>
+                <p>備用聯絡方式 <small>如有報名問題請使用</small></p>
                 <div className="contact-backup-person"><span>聯絡人</span><strong>{event.contact.name}</strong></div>
                 <div className="contact-backup-grid">
                   <a href={`tel:${event.contact.phoneHref}`}><Phone aria-hidden="true" /><span>電話<small>{event.contact.phoneDisplay}</small></span></a>
