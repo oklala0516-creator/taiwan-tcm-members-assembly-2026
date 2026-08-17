@@ -325,6 +325,8 @@ h3 { font-size: 1.35rem; }
 .contact-backup { margin-top: 15px; padding-top: 17px; border-top: 1px solid rgba(255, 255, 255, .17); }
 .contact-backup > p { display: flex; margin: 0 0 10px; gap: 8px; align-items: baseline; color: #dce5df; font-size: .82rem; font-weight: 800; }
 .contact-backup > p small { color: #91a399; font-size: .7rem; }
+.contact-backup-person { display: flex; margin-bottom: 10px; gap: 8px; align-items: baseline; color: #aebdb4; font-size: .72rem; }
+.contact-backup-person strong { color: #e5ece7; font-size: .8rem; font-weight: 700; }
 .contact-backup-grid { display: grid; gap: 7px; }
 .contact-actions .contact-backup-grid a, .contact-actions .contact-backup-grid button { min-height: 49px; padding: 8px 11px; background: rgba(255, 253, 248, .86); border-radius: 12px; opacity: .88; }
 .contact-backup-grid span { font-size: .78rem; }

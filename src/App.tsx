@@ -513,11 +513,12 @@ function App() {
               <p className="eyebrow">CONTACT</p><h2>準備好一起出發了嗎？</h2>
               <p>{registrationClosed ? "線上報名期限已截止，如仍希望參加，請先聯絡主辦單位確認。" : "請於報名截止日前填寫線上表單；如有疑問，可直接聯絡主辦單位。"}</p>
             </div>
-            <div className="contact-person"><span>聯絡人</span><strong>{event.contact.name}</strong></div>
+
             <div className="contact-actions">
               {!registrationClosed && <a className="registration-primary" href={event.registrationUrl} target="_blank" rel="noreferrer"><FileText aria-hidden="true" /><span>填寫線上報名表<small>本活動以 Google 表單報名為主</small></span><ArrowRight aria-hidden="true" /></a>}
               <div className="contact-backup">
                 <p>備用聯絡方式 <small>如有報名問題再使用</small></p>
+                <div className="contact-backup-person"><span>聯絡人</span><strong>{event.contact.name}</strong></div>
                 <div className="contact-backup-grid">
                   <a href={`tel:${event.contact.phoneHref}`}><Phone aria-hidden="true" /><span>電話<small>{event.contact.phoneDisplay}</small></span></a>
                   <a href={`mailto:${event.contact.email}`}><Mail aria-hidden="true" /><span>Email<small>{event.contact.email}</small></span></a>
