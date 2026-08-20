@@ -343,6 +343,11 @@ h3 { font-size: 1.35rem; }
 .mobile-action-bar a, .mobile-action-bar button { display: grid; min-height: 54px; padding: 0; place-items: center; align-content: center; color: inherit; background: transparent; border: 0; border-radius: 13px; cursor: pointer; font: inherit; font-size: .72rem; font-weight: 800; }
 .mobile-action-bar > :last-child { background: var(--yellow); }
 .mobile-action-bar svg { width: 20px; height: 20px; }
+.mobile-action-bar .registration-launch { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(135deg, #ffe373 0%, #ffd241 52%, #ffb83e 100%); box-shadow: 0 5px 16px rgba(240, 170, 28, .28), inset 0 0 0 1px rgba(255, 255, 255, .42); }
+.registration-launch::before { content: ""; position: absolute; z-index: -1; width: 9px; height: 24px; left: calc(50% - 17px); top: 5px; background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 250, 200, .92) 46%, rgba(244, 109, 41, .88)); border-radius: 50%; filter: blur(2px); transform: rotate(42deg); transform-origin: bottom; animation: launchFlame 1.35s ease-in-out infinite; }
+.registration-launch::after { content: ""; position: absolute; z-index: -2; inset: 3px; border: 1px solid rgba(255, 255, 255, .58); border-radius: 11px; animation: launchGlow 1.8s ease-in-out infinite; }
+.mobile-action-bar .registration-launch-icon { width: 24px; height: 24px; filter: drop-shadow(0 2px 2px rgba(127, 75, 9, .2)); animation: rocketReady 1.35s ease-in-out infinite; }
+.registration-launch:active .registration-launch-icon { animation: rocketBlast .42s ease-out both; }
 .navigation-sheet-backdrop { position: fixed; display: flex; inset: 0; z-index: 70; padding: 20px 14px calc(94px + env(safe-area-inset-bottom)); align-items: flex-end; justify-content: center; background: rgba(22, 31, 26, .42); backdrop-filter: blur(5px); }
 .navigation-sheet { width: min(100%, 480px); padding: 20px; background: var(--paper); border: 1px solid rgba(31, 45, 38, .13); border-radius: 26px; box-shadow: 0 24px 70px rgba(31, 45, 38, .3); }
 .navigation-sheet-heading { display: flex; margin-bottom: 16px; gap: 16px; align-items: flex-start; justify-content: space-between; }
@@ -361,6 +366,10 @@ h3 { font-size: 1.35rem; }
 @keyframes breathe { 0%, 100% { transform: scale(.85); opacity: .7; } 50% { transform: scale(1.18); opacity: 1; } }
 @keyframes lineGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @keyframes effectSpark { from { opacity: 0; transform: scale(.3) translateY(5px); } 55% { opacity: 1; } to { opacity: 0; transform: scale(1.25) translateY(-7px); } }
+@keyframes rocketReady { 0%, 100% { transform: translate3d(-1px, 1px, 0) rotate(-5deg); } 48% { transform: translate3d(3px, -4px, 0) rotate(3deg); } 62% { transform: translate3d(0, -1px, 0) rotate(-2deg); } }
+@keyframes rocketBlast { 0% { transform: translate3d(0, 0, 0) rotate(-4deg) scale(1); } 55% { transform: translate3d(9px, -10px, 0) rotate(5deg) scale(1.15); } 100% { transform: translate3d(0, 0, 0) rotate(0) scale(1); } }
+@keyframes launchFlame { 0%, 100% { opacity: .45; transform: rotate(42deg) scaleY(.72); } 50% { opacity: 1; transform: rotate(42deg) scaleY(1.18); } }
+@keyframes launchGlow { 0%, 100% { opacity: .42; box-shadow: 0 0 0 rgba(255, 210, 65, 0); } 50% { opacity: 1; box-shadow: 0 0 14px rgba(255, 210, 65, .58); } }
 
 @media (hover: hover) {
   .button:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(31, 45, 38, .13); }
